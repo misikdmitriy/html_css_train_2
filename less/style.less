@@ -1,0 +1,181 @@
+@import "reset.less";
+
+@top-bar-text-color: white;
+
+body {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.lc-wrapper, .sc-wrapper {
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.sc-wrapper {
+    position: relative;
+}
+
+.top-bar {
+    overflow: hidden;
+    background: #004B8E;
+}
+
+.site-logo {
+    padding: 10px 0;
+    float: left;
+}
+
+.top-menu {
+    float: right;
+}
+
+.top-nav-links, .search, .profile {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.search {
+    width: 15px;
+    height: 14px;
+    background: url("../img/Core/desctop/icon-search.png") no-repeat;
+}
+
+.profile {
+    color: @top-bar-text-color;
+
+    &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: @top-bar-text-color transparent transparent transparent;
+        display: inline-block;
+    }
+}
+
+.top-nav-links {
+    li {
+        list-style: none;
+        display: inline;
+    }
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: @top-bar-text-color;
+}
+
+.nav-link:hover {
+    transition: 0.5s;
+    color: darken(@top-bar-text-color, 20%);
+}
+
+.images-container {
+    position: relative;
+}
+
+.mySlides {
+    width: 100%;
+    display: none;
+}
+
+.slide-buttons-container {
+    position: absolute;
+    bottom: 24px;
+    right: 10px;
+}
+
+.button-left, .button-right, .badge, .badge-active {
+    display: inline-block;     
+    cursor: pointer
+}
+
+.button-left, .button-right {
+    position: absolute;
+    color: white;
+    width: 200px;
+    padding: 25% 5px;
+}
+
+.button-left {
+    text-align: left;
+    top: 0;
+    left: 0;
+}
+
+.button-right {
+    text-align: right;
+    top: 0;
+    right: 0;
+}
+
+.button-left:hover, .button-right:hover {
+    transition: 1s;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.badge, .badge-active {
+    -moz-border-radius: 7px; 
+    -webkit-border-radius: 7px; 
+    border-radius: 7px;
+    border: 1px solid white;
+    height:14px;
+    width:14px;
+}
+
+.badge-active {
+    background: darken(white, 20%);
+    border: 2px solid darken(white, 20%);;
+}
+
+.info-container {
+    display: block;
+    position: absolute;
+    height: 99%;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.info {
+    margin: 15% 200px;
+}
+
+.info-header, .info-text, .info-button {
+    display: block;
+    text-align: center;
+}
+
+h1, h2, .info-button {
+    color: white;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 42px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 100;
+}
+
+.info-button {
+    text-align: center;
+    padding: 15px 0;
+    margin: 0 auto;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 200px;
+    height: 15px;
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+}
