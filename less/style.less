@@ -1,9 +1,20 @@
 @import "reset.less";
+@import "mixin.less";
+
+@font-face {
+    font-family: 'MyWebFont';
+    src: url('../fonts/leaguegothic-regular-webfont.eot');
+    src: url('../fonts/leaguegothic-regular-webfont.ttf') format('truetype'),
+    url('../fonts/leaguegothic-regular-webfont.svg') format('svg');
+}
 
 @top-bar-text-color: white;
 
+@semibold: 700;
+
 body {
-    font-family: "Times New Roman", Times, serif;
+    font-family: "MyWebFont", Times, serif;
+    letter-spacing: 1.5px;
 }
 
 .lc-wrapper, .sc-wrapper {
@@ -73,16 +84,118 @@ body {
 
 .nav-link:hover {
     transition: 0.5s;
-    color: darken(@top-bar-text-color, 20%);
+    color: lighten(#034A8E, 50%);
 }
 
-.images-container {
-    position: relative;
+.nav-filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+
+    li {
+        list-style: none;
+
+        span {
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.nav-item {
+    background: white;
+    width: 14%;
+    border-left: 1px solid #CCC;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    &:last-child {
+        border-right: 1px solid #CCC;
+    }
+
+    &.date,
+    &.travelers,
+    &.duration {
+        width: 11.5%;
+    }
+
+    &.from,
+    &.to {
+        width: 18%;
+    }
+
+    &.logo {
+        .nav-item-value {
+            margin: auto;
+            cursor: pointer;
+
+            img {
+                width: 150%;
+                height: 150%;
+            }
+        }
+    }
+
+    &.leita {
+        .nav-item-title {
+            display: inline-block;
+            margin: auto;
+
+            width: 90%;
+            color: white;
+            font-size: 42px;
+
+            background: #034A8E;
+            cursor: pointer;
+        }
+    }
 }
 
 .mySlides {
     width: 100%;
     display: none;
+}
+
+.nav-item-title {
+    font-family: "MyWebFont", Times, serif;
+    color: #034A8E;
+    font-size: 15px;
+}
+
+.nav-item-value {
+    font-size: 24px;
+    font-weight: @semibold;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    img {
+        height: 30px;
+        margin: auto 0;
+    }
+}
+
+.value-description {
+    font-family: "MyWebFont", Times, serif;
+    color: #034A8E;
+    margin-left: 5px;
+    font-size: 30px;
+}
+
+.nav-item-control:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 5px 0 5px;
+    border-color: blue transparent transparent transparent;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .slide-buttons-container {
@@ -93,89 +206,114 @@ body {
 
 .button-left, .button-right, .badge, .badge-active {
     display: inline-block;     
-    cursor: pointer
+    cursor: pointer;
 }
 
 .button-left, .button-right {
     position: absolute;
     color: white;
     width: 200px;
-    padding: 25% 5px;
+    font-size: 48px;
+    top: 0;    
+    padding: 25% 1%;
+    transform: translate(0, -24px);
+    opacity: 0;
+    transition: 1s;
 }
 
 .button-left {
     text-align: left;
-    top: 0;
     left: 0;
 }
 
 .button-right {
     text-align: right;
-    top: 0;
     right: 0;
 }
 
 .button-left:hover, .button-right:hover {
+    opacity: 1;
     transition: 1s;
-    background: rgba(255, 255, 255, 0.08);
 }
 
 .badge, .badge-active {
-    -moz-border-radius: 7px; 
-    -webkit-border-radius: 7px; 
-    border-radius: 7px;
+    .border-radius(7px);
     border: 1px solid white;
     height:14px;
     width:14px;
 }
 
+.badge:hover {
+    border: 2px solid white;
+}
+
 .badge-active {
-    background: darken(white, 20%);
-    border: 2px solid darken(white, 20%);;
+    background: white;
+    border: 2px solid white;
 }
 
 .info-container {
-    display: block;
+    display: inline-block;
     position: absolute;
     height: 99%;
+    width: 100%;
     top: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.info-wrapper {
+    position: relative;
+    height: 100%;
 }
 
 .info {
-    margin: 15% 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 800px;
 }
 
 .info-header, .info-text, .info-button {
     display: block;
     text-align: center;
+    margin-top: 10px;
 }
 
-h1, h2, .info-button {
+h2, h3, .info-button {
+    line-height: 1.1;
     color: white;
 }
 
-h1 {
-    font-weight: 900;
-    font-size: 42px;
+h2 {
+    font-weight: @semibold;
+    font-size: 72px;
+
+    @media screen and (max-width: 768px) {
+        font-size: 24px;
+    }
 }
 
-h2 {
-    font-size: 24px;
+h3 {
+    font-size: 36px;
     font-weight: 100;
+
+    @media screen and (max-width: 768px) {
+        font-size: 12px;
+    }
 }
 
 .info-button {
     text-align: center;
-    padding: 15px 0;
-    margin: 0 auto;
-    -moz-border-radius: 10px; 
-    -webkit-border-radius: 10px; 
-    border-radius: 10px;
+    padding: 1%;
+    margin: 10px 30%;
     background: rgba(0, 0, 0, 0.7);
-    width: 200px;
-    height: 15px;
-    font-weight: 900;
+    font-weight: @semibold;
     font-size: 15px;
     cursor: pointer;
+    .border-radius(20px);
+
+    @media screen and (max-width: 768px) {
+        font-size: 10px;
+    }
 }

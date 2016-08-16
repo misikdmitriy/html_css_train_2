@@ -22,7 +22,7 @@ function showDiv(n) {
         $(x[i]).hide();
     }
 
-    $(x[slideIndex - 1]).show("fade", {}, 500, function () {
+    $(x[slideIndex - 1]).show("fade", {}, 750, function () {
         for (i = 0; i < x.length; i++) {
             if (i != slideIndex - 1) {
                 $(x[i]).hide();
